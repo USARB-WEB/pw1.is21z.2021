@@ -1,41 +1,38 @@
 class Person{
     constructor(){
-        //console.log("Person created");
-        this._firstName = "Creanga";
-        this._lastName = "Ion";
+        //console.log("Constructor call");
+        //this.name = "Mihai Eminescu";
+        this._firstName = "Eminescu";
+        this._lastName = "Mihai";
         this._age = null;
     }
 
-    get firstName(){
-        return this._firstName;
-    }
-
-    set age(value){
-        if(value < 0){
-            console.log("Age can not be negative");
-            return;
-        }
-        this._age = value;
-    }
-
-    get age(){
-        if(this._age === null){
-            return "Age undefined";
+    get age() {
+        if(!this._age) {
+            return "Age is undefined";
         }
         return this._age;
     }
 
-    getFullName(){
-        //return this.lastName + ' ' + this.firstName;
-        return `${this._lastName} ${this._firstName}`;
+    set age(value) {
+        if(value < 0) {
+            console.log("Age is invalid");
+        } else{
+            this._age = value;
+        }
     }
 
+    getFullName(){
+        //return this._firstName + " " + this._lastName;
+        return `${this._firstName} ${this._lastName}`;
+    }
 }
 
 const person = new Person();
-//console.log(person.firstName);
-//console.log(person.getFullName());
+console.log(person.getFullName());
+console.log(person.age);
+person.age = 21;
+console.log(person.age);
+person.age = -21;
+console.log(person.age);
 //console.log(person);
-console.log(person.age);
-person.age = -88;
-console.log(person.age);
